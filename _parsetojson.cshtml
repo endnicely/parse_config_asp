@@ -1,0 +1,37 @@
+﻿@{
+    //retrieve each line from _sample.config and parse the data to a json string.
+    var dataFile = Server.MapPath("~/_sample.config");
+    Array configData = File.ReadAllLines(dataFile);
+
+    string lines, pair;
+    if  (configData != null || configData.Length != 0){
+        lines = "";
+        foreach (string dataLine in configData) 
+        {   
+            if (dataLine.Contains("=")){
+                //construct each key value pair of the json string.
+                pair="";
+                foreach (string dataItem in dataLine.Split('=')) 
+                {
+                    pair += "\"" + dataItem.Trim() + "\"" ;
+                    if (pair.Contains(":")){
+                        pair += "," ;
+                    }
+                    else{
+                        pair += ":" ;
+                    }
+                }
+                lines += pair;
+            }             
+        }
+        // Compose a json string.
+        lines = "[{" + lines.Remove(lines.Length - 1) + "}]";
+        //write the json string to a file.
+        var jsonFile = Server.MapPath("~/_json.txt");
+        System.IO.StreamWriter file = new System.IO.StreamWriter(jsonFile);
+        file.WriteLine(lines);
+        file.Close();
+    }
+
+}
+

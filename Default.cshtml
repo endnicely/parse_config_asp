@@ -1,0 +1,23 @@
+﻿
+@{var myStyleSheet = "~/asset/css/site.css";}   
+@RenderPage("~/_parsetojson.cshtml")
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Parse Configuration Demo</title>
+        <link rel="stylesheet" type="text/css" href="@Href(myStyleSheet)">
+    </head>
+    <body>
+        <div id="main">
+            <h1>Parse Configuration Demo</h1>
+
+            <div id="id01"></div>
+            <footer id="foot01"></footer>
+        </div>
+        <script src="asset/js/ajax_jason.js"></script>
+        @RenderPage("_footer.cshtml")
+           
+    </body>
+</html>

@@ -1,0 +1,4 @@
+***********************************************************************************************
+* This demo site was written with html, css, javascript, Razor C# WebPage, ajax               *
+* to parse a sample config file information to json and show on a table in the client browser.*
+***********************************************************************************************
